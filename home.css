@@ -1,0 +1,57 @@
+body {
+    margin:30px;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+	/* background-color: #FFEBEE */
+}
+
+.form-container{
+    width: 400px;
+    background-color: #fff;
+    border-radius: 12px
+
+}
+
+.form-group{
+    margin-top: 15px;
+    position: relative;
+}
+/* .form-group.error input{
+    border:2px solid red
+}
+.form-group.success input{
+    border:2px solid green
+} */
+.form-group i{
+    visibility: hidden;
+    position: absolute;
+    right:3%;
+    top:56%
+}
+
+/* .form-group.success i.fa-check-circle{
+    visibility: visible;
+}
+.form-group.error i.fa-exclamation-circle{
+    visibility: visible;
+} */
+
+.form-group p{
+    display: none;
+}
+
+.form-group.error p{
+    display: block;
+    visibility: visible;
+    color:red;
+    font-weight: 300;
+}
+
+
+
+button[type="submit"]
+{
+    margin-top: 20px;
+}
