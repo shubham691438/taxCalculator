@@ -101,9 +101,9 @@ deductions.addEventListener('input',(e)=>{
 
 
 function setError(input,msg){
-    // input.className="form-control is-invalid"
-    const formGroup=input.parentElement;
-   
+    const formGroup = input.parentElement;
+    const exclamationIcon = formGroup.querySelector('.fa-exclamation-circle');
+    exclamationIcon.setAttribute('data-original-title', msg); // Set the title attribute with the error message
     formGroup.className="form-group error"
 }
 
@@ -120,7 +120,6 @@ function setSuccess(input)
 function setDefault(input)
 {
     const formGroup=input.parentElement;
-    input.className="form-control"
 
     formGroup.className="form-group"
 }
