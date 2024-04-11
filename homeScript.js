@@ -4,6 +4,7 @@ $(function () {
     $('[data-toggle="tooltip"]').tooltip()
   })
 
+ 
 
 const form=document.getElementById('taxCalculatorForm')
 
@@ -31,12 +32,12 @@ grossAnnualIncome.addEventListener('input',(e)=>{
         setError(grossAnnualIncome,"Cannot be left Empty")
     }
     else if (isNaN(val) ) {
-        console.log("not a number")
+     
         setError(grossAnnualIncome,"Please Enter Number only")
     }
     else
     {
-        console.log("it is number")
+        
         setSuccess(grossAnnualIncome);
         
     }
@@ -51,12 +52,12 @@ extraIncome.addEventListener('input',(e)=>{
         setDefault(extraIncome)
     }
     else if (isNaN(val) ) {
-        console.log("not a number")
+     
         setError(extraIncome,"Please Enter Number only")
     }
     else
     {
-        console.log("it is number")
+       
         setSuccess(extraIncome);
         
     }
@@ -86,12 +87,12 @@ deductions.addEventListener('input',(e)=>{
         setDefault(deductions)
     }
     else if (isNaN(val) ) {
-        console.log("not a number")
+        
         setError(deductions,"Please Enter Number only")
     }
     else
     {
-        console.log("it is number")
+        
         setSuccess(deductions);
         
     }
@@ -100,19 +101,19 @@ deductions.addEventListener('input',(e)=>{
 
 
 function setError(input,msg){
-    console.log(msg)
-    input.className="form-control is-invalid"
+    // input.className="form-control is-invalid"
     const formGroup=input.parentElement;
-    console.log(formGroup);
+   
     formGroup.className="form-group error"
 }
 
 function setSuccess(input)
 {
     const formGroup=input.parentElement;
-    input.className="form-control is-valid"
-    console.log(formGroup);
+    // input.className="form-control is-valid"
+   
     formGroup.className="form-group success"
+    
 }
 
 
@@ -120,7 +121,7 @@ function setDefault(input)
 {
     const formGroup=input.parentElement;
     input.className="form-control"
-    console.log(formGroup);
+
     formGroup.className="form-group"
 }
 
