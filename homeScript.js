@@ -12,6 +12,8 @@ const extraIncome=document.getElementById('extraIncome')
 const ageGroup=document.getElementById('ageGroup')
 const deductions=document.getElementById('deductions')
 
+
+
 form.addEventListener('submit',(e)=>{
     e.preventDefault();
     
@@ -21,7 +23,7 @@ form.addEventListener('submit',(e)=>{
     const deductionsVal=Number(deductions.value.trim())
 
     
-    if(grossAnnualIncomeVal===0)
+    if(grossAnnualIncomeVal===0 )
     {
         setError(grossAnnualIncome,"Cannot be left Empty")
         return
@@ -32,7 +34,7 @@ form.addEventListener('submit',(e)=>{
         setError(ageGroup,"Age group must be selected")
         return
     }
-
+    
 
     if(deductionsVal.length==0)
     {
@@ -99,13 +101,25 @@ form.addEventListener('submit',(e)=>{
 
 
 
+//add event listeners
+grossAnnualIncome.addEventListener('input',(e)=>{ validateGrossAnnualIncome(e) })
+extraIncome.addEventListener('input',(e)=>{ validateExtraIncome(e) })
+ageGroup.addEventListener('input',(e)=>{ validateAgeGroup(e) })
+deductions.addEventListener('input',(e)=>{ validateDeductions(e) })
 
-grossAnnualIncome.addEventListener('input',(e)=>{
+
+function validateGrossAnnualIncome(e)
+{
     let val=e.target.value;
     // console.log(val) 
     if(val.length==0)   
     {
         setError(grossAnnualIncome,"Cannot be left Empty")
+        error=true;
+    }
+    else if(Number(val.trim())<0)
+    {
+        setError(grossAnnualIncome,"Income cannot be negative")
     }
     else if (isNaN(val) ) {
      
@@ -117,15 +131,19 @@ grossAnnualIncome.addEventListener('input',(e)=>{
         setSuccess(grossAnnualIncome);
         
     }
-})
+}
 
-
-extraIncome.addEventListener('input',(e)=>{
+function validateExtraIncome(e)
+{
     let val=e.target.value;
     // console.log(val) 
     if(val.length==0)   
     {
         setDefault(extraIncome)
+    }
+    else if(Number(val.trim())<0)
+    {
+        setError(extraIncome,"Income cannot be negative")
     }
     else if (isNaN(val) ) {
      
@@ -137,10 +155,10 @@ extraIncome.addEventListener('input',(e)=>{
         setSuccess(extraIncome);
         
     }
-})
+}
 
-
-ageGroup.addEventListener('input',(e)=>{
+function validateAgeGroup(e)
+{
     val=e.target.value;
 
     console.log(val);
@@ -152,15 +170,19 @@ ageGroup.addEventListener('input',(e)=>{
     {
         setSuccess(ageGroup)
     }
-})
+}
 
-
-deductions.addEventListener('input',(e)=>{
+function validateDeductions(e)
+{
     let val=e.target.value;
     // console.log(val) 
     if(val.length==0)   
     {
         setDefault(deductions)
+    }
+    else if(Number(val.trim())<0)
+    {
+        setError(deductions,"Deductions cannot be negative")
     }
     else if (isNaN(val) ) {
         
@@ -172,10 +194,7 @@ deductions.addEventListener('input',(e)=>{
         setSuccess(deductions);
         
     }
-})
-
-
-
+}
 function setError(input,msg){
     const formGroup = input.parentElement;
     const exclamationIcon = formGroup.querySelector('.fa-exclamation-circle');
