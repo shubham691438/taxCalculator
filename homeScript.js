@@ -20,7 +20,7 @@ form.addEventListener('submit',(e)=>{
     const ageGroupVal=ageGroup.value.trim()
     const deductionsVal=Number(deductions.value.trim())
 
-    if(grossAnnualIncomeVal.length==0)
+    if(grossAnnualIncomeVal===0)
     {
         setError(grossAnnualIncome,"Cannot be left Empty")
         return
