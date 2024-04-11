@@ -23,17 +23,10 @@ form.addEventListener('submit',(e)=>{
     const deductionsVal=Number(deductions.value.trim())
 
     
-    if(grossAnnualIncomeVal===0 )
-    {
-        setError(grossAnnualIncome,"Cannot be left Empty")
-        return
-    }
-
-    if(ageGroupVal=="Select Age Group")
-    {
-        setError(ageGroup,"Age group must be selected")
-        return
-    }
+   if(!validateGrossAnnualIncome(grossAnnualIncome.value) || !validateExtraIncome(extraIncome.value) || !validateAgeGroup(ageGroup.value) || !validateDeductions(deductions.value) )
+   {
+    return 
+   }
     
 
     if(deductionsVal.length==0)
@@ -102,97 +95,119 @@ form.addEventListener('submit',(e)=>{
 
 
 //add event listeners
-grossAnnualIncome.addEventListener('input',(e)=>{ validateGrossAnnualIncome(e) })
-extraIncome.addEventListener('input',(e)=>{ validateExtraIncome(e) })
-ageGroup.addEventListener('input',(e)=>{ validateAgeGroup(e) })
-deductions.addEventListener('input',(e)=>{ validateDeductions(e) })
-
-
-function validateGrossAnnualIncome(e)
-{
+grossAnnualIncome.addEventListener('input',(e)=>{ 
     let val=e.target.value;
+    validateGrossAnnualIncome(val) 
+})
+extraIncome.addEventListener('input',(e)=>{ 
+    let val=e.target.value;
+    validateExtraIncome(val)
+ })
+ageGroup.addEventListener('input',(e)=>{ 
+    let val=e.target.value;
+    validateAgeGroup(val) 
+})
+deductions.addEventListener('input',(e)=>{ 
+    let val=e.target.value;
+    validateDeductions(val) 
+})
+
+
+function validateGrossAnnualIncome(val)
+{
+    
     // console.log(val) 
-    if(val.length==0)   
+    if(val=="")   
     {
         setError(grossAnnualIncome,"Cannot be left Empty")
-        error=true;
+        return false
     }
     else if(Number(val.trim())<0)
     {
         setError(grossAnnualIncome,"Income cannot be negative")
+        return false
     }
     else if (isNaN(val) ) {
      
         setError(grossAnnualIncome,"Please Enter Number only")
+        return false
     }
     else
     {
         
         setSuccess(grossAnnualIncome);
-        
+        return true
     }
 }
 
-function validateExtraIncome(e)
+function validateExtraIncome(val)
 {
-    let val=e.target.value;
     // console.log(val) 
-    if(val.length==0)   
+    if(val=="")   
     {
         setDefault(extraIncome)
+        return true
     }
     else if(Number(val.trim())<0)
     {
         setError(extraIncome,"Income cannot be negative")
+        return false
     }
     else if (isNaN(val) ) {
      
         setError(extraIncome,"Please Enter Number only")
+        return false
     }
     else
     {
        
         setSuccess(extraIncome);
+        return true
         
     }
 }
 
-function validateAgeGroup(e)
+function validateAgeGroup(val)
 {
-    val=e.target.value;
+   
 
-    console.log(val);
+   
     if(val=="Select Age Group")
     {
         setError(ageGroup,"Age Group must be selected")
+        return false
     }
     else
     {
         setSuccess(ageGroup)
+        return true
     }
 }
 
-function validateDeductions(e)
+function validateDeductions(val)
 {
-    let val=e.target.value;
+    
     // console.log(val) 
-    if(val.length==0)   
+    if(val=="")   
     {
         setDefault(deductions)
+        return true
     }
     else if(Number(val.trim())<0)
     {
         setError(deductions,"Deductions cannot be negative")
+        return false
     }
     else if (isNaN(val) ) {
         
         setError(deductions,"Please Enter Number only")
+        return false
     }
     else
     {
         
         setSuccess(deductions);
-        
+        return true
     }
 }
 function setError(input,msg){
