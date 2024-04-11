@@ -20,6 +20,7 @@ form.addEventListener('submit',(e)=>{
     const ageGroupVal=ageGroup.value.trim()
     const deductionsVal=Number(deductions.value.trim())
 
+    
     if(grossAnnualIncomeVal===0)
     {
         setError(grossAnnualIncome,"Cannot be left Empty")
@@ -32,6 +33,7 @@ form.addEventListener('submit',(e)=>{
         return
     }
 
+
     if(deductionsVal.length==0)
     {
         deductions.value=0;
@@ -42,7 +44,7 @@ form.addEventListener('submit',(e)=>{
         extraIncome.value=0;
     }
 
-
+    
 
 
     
@@ -75,6 +77,15 @@ form.addEventListener('submit',(e)=>{
         console.log("Overall Income After Tax Deductions",inHand)
 
         
+    }
+
+    if(totalIncome<0)
+    {
+
+        const warningBox=document.querySelector('#warningMsg')
+        warningBox.textContent="deductions cannot be more than sum of gross annual income and extra Income from other sources"
+        warningBox.style.display="block"
+        return;
     }
     document.querySelector('.modal-body h3 b').textContent=inHand;
     document.querySelector('.modal-body p b').textContent=taxAmount;

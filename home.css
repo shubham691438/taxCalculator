@@ -37,12 +37,20 @@ body {
     visibility: visible;
 } 
 
+.form-group .fa-question-circle{
+    visibility: visible;
+    position: relative;
+    left: 10px;
+    
+} 
 .form-group i{
     visibility: hidden;
     position: absolute;
     right:3%;
     top:56%
 } 
+
+
 
 .form-group.error input:focus{
     box-shadow: 0 0 0 0.25rem rgba(255, 0, 0, 0.25);
@@ -63,4 +71,9 @@ body {
 button[type="submit"]
 {
     margin-top: 20px;
+}
+
+#warningMsg{
+   display: none;
+   margin-top: 10px;
 }

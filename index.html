@@ -17,21 +17,21 @@
 
         <form id="taxCalculatorForm">
             <div class="form-group">
-                <label for="grossAnnualIncome">Enter Gross Annual Income</label>
+                <label for="grossAnnualIncome">Enter Gross Annual Income</label><i class="fa fa-question-circle" style="color:grey" data-toggle="tooltip" title="Gross Annual Income is your total salary in a year without any deductions"></i>
                 <input  id="grossAnnualIncome" class="form-control" placeholder="Enter Gross Annual Income" autocomplete="off"  >
                 <i class="fa fa-check-circle" style="color:green " > </i>
                 <i class="fa fa-exclamation-circle" style="color:red" data-toggle="tooltip" title="Some tooltip text!"></i>
                 
             </div>
             <div class="form-group">
-                <label for="extraIncome"> Enter Extra Income</label>
+                <label for="extraIncome"> Enter Extra Income</label><i class="fa fa-question-circle" style="color:grey" data-toggle="tooltip" title="Income from Other Sources refers to any income that is not derived from employment, business, or profession."></i>
                 <input  id="extraIncome" class="form-control" placeholder="Enter Extra Income from other sources" autocomplete="off"> 
                 <i class="fa fa-check-circle" style="color:green"  ></i>
                 <i class="fa fa-exclamation-circle" style="color:red"  data-toggle="tooltip" title="Some tooltip text!"></i>
                 
             </div>
             <div class="form-group">
-                <label for="ageGroup" > Select Age Group</label>
+                <label for="ageGroup" > Select Age Group</label><i class="fa fa-question-circle" style="color:grey" data-toggle="tooltip" title="Differnt age groups are taxed differently"></i>
                 <select id="ageGroup" class="form-control" autocomplete="off">
                     <option selected>Select Age Group</option>
                     <option value="LessThan40">Less Than 40 years</option>
@@ -43,13 +43,16 @@
                 
             </div>
             <div class="form-group">
-                <label for="deductions">Enter Total Applicable Deductions</label>
+                <label for="deductions">Enter Total Applicable Deductions</label><i class="fa fa-question-circle" style="color:grey" data-toggle="tooltip" title="A deduction is an expense that can be subtracted from a taxpayer's gross income in order to reduce the amount of income that is subject to taxation."></i>
                 <input  id="deductions" class="form-control" autocomplete="off">
                 <i class="fa fa-check-circle" style="color:green"  ></i>
                 <i class="fa fa-exclamation-circle" style="color:red"  data-toggle="tooltip" title="Some tooltip text!"></i>
                 
             </div>
             <button type="submit" id="submitButton" class="btn btn-primary" data-toggle="modal" data-target="">Submit</button>
+            <div class="alert alert-danger" role="alert" id="warningMsg">
+                
+            </div>
         </form>
     </div>
 
@@ -58,14 +61,12 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Result</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+          <h1 class="modal-title text-primary" id="exampleModalLongTitle">Result</h1>
+          
         </div>
         <div class="modal-body">
-          <h3>Your Overall income will be <b> </b></h3>
-          <p>After Tax deduction of Rs <b></b></p>
+          <h3>Your Overall income will be <b class="text-success"> </b></h3>
+          <p>After Tax deduction of Rs <b class="text-success"></b></p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
