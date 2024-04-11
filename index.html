@@ -9,7 +9,8 @@
     <title>Tax Calculator</title>
 </head>
 <body >
-    
+
+    <!-- form -->
     <div class="form-container">
         <h1>Tax Calculator</h1>
         
@@ -48,9 +49,30 @@
                 <i class="fa fa-exclamation-circle" style="color:red"  data-toggle="tooltip" title="Some tooltip text!"></i>
                 
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" id="submitButton" class="btn btn-primary" data-toggle="modal" data-target="">Submit</button>
         </form>
     </div>
+
+    <!-- Modal -->
+<div class="modal fade" id="taxCalculatorModal" tabindex="-1" role="dialog" aria-labelledby="taxCalculatorModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Result</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <h3>Your Overall income will be <b> </b></h3>
+          <p>After Tax deduction of Rs <b></b></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
     
    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

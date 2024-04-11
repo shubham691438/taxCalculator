@@ -49,8 +49,11 @@ form.addEventListener('submit',(e)=>{
     const totalIncome = grossAnnualIncomeVal + extraIncomeVal - deductionsVal;
     console.log(totalIncome);
     
+    let taxAmount,taxableIncome,inHand
     if (totalIncome <= 800000) {
-        console.log("No tax");
+        taxAmount=0;
+        taxableIncome=0;
+        inHand=totalIncome;
     } else {
         let taxRate=0;
         if (ageGroupVal === "LessThan40") {
@@ -62,16 +65,26 @@ form.addEventListener('submit',(e)=>{
         }
 
         
-        const taxableIncome = totalIncome - 800000; 
+        taxableIncome = totalIncome - 800000; 
 
         
-        const taxAmount = taxRate * taxableIncome;
+        taxAmount = taxRate * taxableIncome;
+        inHand=totalIncome-taxAmount
 
         console.log("Tax amount:", taxAmount);
-        console.log("Overall Income After Tax Deductions",totalIncome-taxAmount)
+        console.log("Overall Income After Tax Deductions",inHand)
+
+        
     }
+    document.querySelector('.modal-body h3 b').textContent=inHand;
+    document.querySelector('.modal-body p b').textContent=taxAmount;
+    
+    const submitButton=document.getElementById('submitButton')
+    submitButton.setAttribute('data-target', '#taxCalculatorModal')
+    submitButton.click()
 
 })
+
 
 
 
