@@ -7,23 +7,75 @@ $(function () {
  
 
 const form=document.getElementById('taxCalculatorForm')
+const grossAnnualIncome=document.getElementById('grossAnnualIncome')
+const extraIncome=document.getElementById('extraIncome')
+const ageGroup=document.getElementById('ageGroup')
+const deductions=document.getElementById('deductions')
 
 form.addEventListener('submit',(e)=>{
     e.preventDefault();
-    validateForm();
+    
+    const grossAnnualIncomeVal=Number(grossAnnualIncome.value.trim())
+    const extraIncomeVal=Number(extraIncome.value.trim())
+    const ageGroupVal=ageGroup.value.trim()
+    const deductionsVal=Number(deductions.value.trim())
+
+    if(grossAnnualIncomeVal.length==0)
+    {
+        setError(grossAnnualIncome,"Cannot be left Empty")
+        return
+    }
+
+    if(ageGroupVal=="Select Age Group")
+    {
+        setError(ageGroup,"Age group must be selected")
+        return
+    }
+
+    if(deductionsVal.length==0)
+    {
+        deductions.value=0;
+    }
+
+    if(extraIncomeVal.length==0)
+    {
+        extraIncome.value=0;
+    }
+
+
+
+
+    
+    const totalIncome = grossAnnualIncomeVal + extraIncomeVal - deductionsVal;
+    console.log(totalIncome);
+    
+    if (totalIncome <= 800000) {
+        console.log("No tax");
+    } else {
+        let taxRate=0;
+        if (ageGroupVal === "LessThan40") {
+            taxRate = 0.3; 
+        } else if (ageGroupVal === "40to60") {
+            taxRate = 0.4; 
+        } else {
+            taxRate = 0.1; 
+        }
+
+        
+        const taxableIncome = totalIncome - 800000; 
+
+        
+        const taxAmount = taxRate * taxableIncome;
+
+        console.log("Tax amount:", taxAmount);
+        console.log("Overall Income After Tax Deductions",totalIncome-taxAmount)
+    }
+
 })
 
-function validateForm()
-{
-    const grossAnnualIncomeVal=document.getElementById('grossAnnualIncome').value.trim()
-    const extraIncomeVal=document.getElementById('extraIncome').value.trim()
-    const ageGroupVal=document.getElementById('ageGroup').value.trim()
-    const deductionsVal=document.getElementById('deductions').value.trim()
 
 
-}
 
-const grossAnnualIncome=document.getElementById('grossAnnualIncome')
 grossAnnualIncome.addEventListener('input',(e)=>{
     let val=e.target.value;
     // console.log(val) 
@@ -43,7 +95,7 @@ grossAnnualIncome.addEventListener('input',(e)=>{
     }
 })
 
-const extraIncome=document.getElementById('extraIncome')
+
 extraIncome.addEventListener('input',(e)=>{
     let val=e.target.value;
     // console.log(val) 
@@ -63,7 +115,7 @@ extraIncome.addEventListener('input',(e)=>{
     }
 })
 
-const ageGroup=document.getElementById('ageGroup')
+
 ageGroup.addEventListener('input',(e)=>{
     val=e.target.value;
 
@@ -78,7 +130,7 @@ ageGroup.addEventListener('input',(e)=>{
     }
 })
 
-const deductions=document.getElementById('deductions')
+
 deductions.addEventListener('input',(e)=>{
     let val=e.target.value;
     // console.log(val) 
